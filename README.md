@@ -15,16 +15,21 @@ This is the official PyTorch implementation of our paper *Large-scale Point Clou
 ## Requirements
 
 1. Install [PyTorch](https://pytorch.org) and [torchnet](https://github.com/pytorch/tnt) with `pip install git+https://github.com/pytorch/tnt.git@master`. 
-__torch(1.0.0), torchvision(0.2.1), torchnet(0.0.4)__
-
+```
+torch(1.0.0), torchvision(0.2.1), torchnet(0.0.4)
+```
 2. Install additional Python packages: `pip install future \python-igraph tqdm \transforms3d pynvrtc fastrlock cupy h5py sklearn plyfile scipy`.
-__sudo apt-get install -y libigraph0-dev__
-
+```
+sudo apt-get install -y libigraph0-dev
+```
 3. Install Boost (1.63.0 or newer) and Eigen3, in Conda: `conda install -c anaconda boost; conda install -c omnia eigen3; conda install eigen; conda install -c r libiconv`.
-__cd path/to/boost_1_67_0
+
+```
+cd path/to/boost_1_67_0__
 sudo ./bootstrap.sh --with-python=python3
 sudo ./b2 install
 sudo apt install libeigen3-dev__
+```
 
 4. Make sure that cut pursuit was downloaded. Otherwise, clone [this repository](https://github.com/loicland/cut-pursuit) in `/partition`
 
