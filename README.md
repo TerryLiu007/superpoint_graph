@@ -14,25 +14,31 @@ This is the official PyTorch implementation of our paper *Large-scale Point Clou
 
 ## Requirements
 
-1. Install [PyTorch](https://pytorch.org) and [torchnet](https://github.com/pytorch/tnt) with `pip install git+https://github.com/pytorch/tnt.git@master`. Pytorch 0.4 is not tested and might cause errors.
+1. Install [PyTorch](https://pytorch.org) and [torchnet](https://github.com/pytorch/tnt) with `pip install git+https://github.com/pytorch/tnt.git@master`. 
+__torch(1.0.0), torchvision(0.2.1), torchnet(0.0.4)__
 
-2. Install additional Python packages: `pip install future python-igraph tqdm transforms3d pynvrtc fastrlock cupy h5py sklearn plyfile scipy`.
+2. Install additional Python packages: `pip install future \python-igraph tqdm \transforms3d pynvrtc fastrlock cupy h5py sklearn plyfile scipy`.
+__sudo apt-get install -y libigraph0-dev__
 
 3. Install Boost (1.63.0 or newer) and Eigen3, in Conda: `conda install -c anaconda boost; conda install -c omnia eigen3; conda install eigen; conda install -c r libiconv`.
+__cd path/to/boost_1_67_0
+sudo ./bootstrap.sh --with-python=python3
+sudo ./b2 install
+sudo apt install libeigen3-dev__
 
 4. Make sure that cut pursuit was downloaded. Otherwise, clone [this repository](https://github.com/loicland/cut-pursuit) in `/partition`
 
 5. Compile the ```libply_c``` and ```libcp``` libraries:
 ```
 cd partition/ply_c
-cmake . -DPYTHON_LIBRARY=$CONDAENV/lib/libpython3.6m.so -DPYTHON_INCLUDE_DIR=$CONDAENV/include/python3.6m -DBOOST_INCLUDEDIR=$CONDAENV/include -DEIGEN3_INCLUDE_DIR=$CONDAENV/include/eigen3
+cmake . -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.5m.so -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m -DBOOST_INCLUDEDIR=/usr/local/include -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
 make
 cd ..
 cd cut-pursuit/src
-cmake . -DPYTHON_LIBRARY=$CONDAENV/lib/libpython3.6m.so -DPYTHON_INCLUDE_DIR=$CONDAENV/include/python3.6m -DBOOST_INCLUDEDIR=$CONDAENV/include -DEIGEN3_INCLUDE_DIR=$CONDAENV/include/eigen3
+cmake . -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.5m.so -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m -DBOOST_INCLUDEDIR=/usr/local/include -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
 make
 ```
-where `$CONDAENV` is the path to your conda environment. The code was tested on Ubuntu 14.04 with Python 3.6 and PyTorch 0.2 and 0.3. The newer 0.4 is not tested yet.
+The code was tested on Ubuntu 14.04 with Python 3.6 and PyTorch 0.2 and 0.3. The newer 0.4 is not tested yet.
 
 ### Troubleshooting
 
