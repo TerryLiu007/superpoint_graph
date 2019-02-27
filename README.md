@@ -37,6 +37,15 @@ sudo apt install libeigen3-dev
 5. Compile the ```libply_c``` and ```libcp``` libraries:
 ```
 cd partition/ply_c
+cmake . -DPYTHON_LIBRARY=$CONDAENV/lib/libpython3.6m.so -DPYTHON_INCLUDE_DIR=$CONDAENV/include/python3.6m -DBOOST_INCLUDEDIR=$CONDAENV/include -DEIGEN3_INCLUDE_DIR=$CONDAENV/include/eigen3
+make
+cd ..
+cd cut-pursuit/src
+cmake . -DPYTHON_LIBRARY=$CONDAENV/lib/libpython3.6m.so -DPYTHON_INCLUDE_DIR=$CONDAENV/include/python3.6m -DBOOST_INCLUDEDIR=$CONDAENV/include -DEIGEN3_INCLUDE_DIR=$CONDAENV/include/eigen3
+make
+```
+```
+cd partition/ply_c
 mkdir build
 cd build
 cmake .. -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.5m.so -DPYTHON_INCLUDE_DIR=/usr/include/python3.5m -DBOOST_INCLUDEDIR=/usr/local/include -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
