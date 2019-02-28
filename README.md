@@ -37,11 +37,11 @@ sudo apt install libeigen3-dev
 5. Compile the ```libply_c``` and ```libcp``` libraries:
 ```
 cd partition/ply_c
-cmake . -DPYTHON_LIBRARY=$CONDAENV/lib/libpython3.7m.so -DPYTHON_INliCLUDE_DIR=$CONDAENV/include/python3.7m -DBOOST_INCLUDEDIR=$CONDAENV/include -DEIGEN3_INCLUDE_DIR=$CONDAENV/include/eigen3
+cmake . -DPYTHON_LIBRARY=$CONDAENV/lib/libpython3.6m.so -DPYTHON_INliCLUDE_DIR=$CONDAENV/include/python3.7m -DBOOST_INCLUDEDIR=$CONDAENV/include -DEIGEN3_INCLUDE_DIR=$CONDAENV/include/eigen3
 make
 cd ..
 cd cut-pursuit/src
-cmake . -DPYTHON_LIBRARY=$CONDAENV/lib/libpython3.7m.so -DPYTHON_INCLUDE_DIR=$CONDAENV/include/python3.7m -DBOOST_INCLUDEDIR=$CONDAENV/include -DEIGEN3_INCLUDE_DIR=$CONDAENV/include/eigen3
+cmake . -DPYTHON_LIBRARY=$CONDAENV/lib/libpython3.6m.so -DPYTHON_INCLUDE_DIR=$CONDAENV/include/python3.7m -DBOOST_INCLUDEDIR=$CONDAENV/include -DEIGEN3_INCLUDE_DIR=$CONDAENV/include/eigen3
 make
 ```
 ```
@@ -89,7 +89,7 @@ First, reorganize point clouds into superpoints by:
 To train on the all 6 folds, run
 ```
 for FOLD in 1 2 3 4 5 6; do \
-CUDA_VISIBLE_DEVICES=0 python learning/main.py --dataset s3dis --S3DIS_PATH $S3DIR_DIR --cvfold $FOLD --epochs 350 --lr_steps '[275,320]' \
+CUDA_VISIBLE_DEVICES=0 python learning/main.py --dataset s3dis --cvfold $FOLD --epochs 50 --lr_steps '[275,320]' \
 --test_nth_epoch 50 --model_config 'gru_10_0,f_13' --ptn_nfeat_stn 14 --nworkers 2 --odir "results/s3dis/best/cv${FOLD}"; \
 done
 ```
