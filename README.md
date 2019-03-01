@@ -16,9 +16,10 @@ This is the official PyTorch implementation of our paper *Large-scale Point Clou
 
 1. Install [PyTorch](https://pytorch.org) and [torchnet](https://github.com/pytorch/tnt) with `pip install git+https://github.com/pytorch/tnt.git@master`. 
 ```
-pip install torch torchvision torchnet
+conda install pytorch=0.4.1 cuda90 -c pytorch
+pip install torchvision torchnet
 ```
-2. Install additional Python packages: `pip install future \python-igraph tqdm transforms3d pynvrtc fastrlock cupy h5py sklearn plyfile scipy`.
+2. Install additional Python packages: `pip install future python-igraph tqdm transforms3d pynvrtc fastrlock cupy h5py sklearn plyfile scipy`.
 ```
 sudo apt-get install -y libigraph0-dev
 sudo apt-get install python-numpy
@@ -78,13 +79,13 @@ To fix some issues with the dataset as reported in issue [#29](https://github.co
 
 To compute the partition run
 
-```python partition/partition.py --dataset s3dis --ROOT_PATH $S3DIR_DIR --voxel_width 0.03 --reg_strength 0.03```
+```python partition/partition.py --voxel_width 0.03 --reg_strength 0.03```
 
 ### Training
 
 First, reorganize point clouds into superpoints by:
 
-```python learning/s3dis_dataset.py --S3DIS_PATH $S3DIR_DIR```
+```python learning/s3dis_dataset.py```
 
 To train on the all 6 folds, run
 ```
