@@ -99,7 +99,7 @@ The trained networks can be downloaded [here](http://imagine.enpc.fr/~simonovm/l
 To test this network on the full test set, run
 ```
 for FOLD in 1 2 3 4 5 6; do \
-CUDA_VISIBLE_DEVICES=0 python learning/main.py --dataset s3dis --S3DIS_PATH $S3DIR_DIR --cvfold $FOLD --epochs -1 --lr_steps '[275,320]' \
+CUDA_VISIBLE_DEVICES=0 python learning/main.py --dataset s3dis --cvfold $FOLD --epochs -1 --lr_steps '[275,320]' \
 --test_nth_epoch 50 --model_config 'gru_10_0,f_13' --ptn_nfeat_stn 14 --nworkers 2 --odir "results/s3dis/best/cv${FOLD}" --resume RESUME; \
 done
 ```
@@ -109,7 +109,7 @@ To evaluate quantitavily on the full set on a trained model type:
 
 To visualize the results and all intermediary steps, use the visualize function in partition. For example:
 ```
-python partition/visualize.py --dataset s3dis --ROOT_PATH $S3DIR_DIR --res_file 'models/cv1/predictions_val' --file_path 'Area_1/conferenceRoom_1' --output_type igfpres
+python partition/visualize.py --dataset s3dis --res_file 'models/cv1/predictions_val' --file_path 'Area_1/conferenceRoom_1' --output_type igfpres
 ```
 
 ```output_type``` defined as such:
